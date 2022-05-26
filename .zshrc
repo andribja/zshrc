@@ -49,34 +49,8 @@ autoload compinit && compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
-# g4d autocomplete
-source /etc/bash_completion.d/g4d
-# blaze autocomplete
-fpath=(/google/src/files/head/depot/google3/devtools/blaze/scripts/zsh_completion $fpath)
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# fig status
-source ~/.zsh/fig_status/fig_prompt
-
-# Template Arguments:
-#   FIG_PROMPT_MODIFIED: Replaced with $modified
-#   FIG_PROMPT_ADDED: Replaced with $added
-#   FIG_PROMPT_DELETED: Replaced with $deleted
-#   FIG_PROMPT_UNKNOWN: Replaced with $unknown
-#   FIG_PROMPT_UNEXPORTED: Replaced with $unexported
-#   FIG_PROMPT_OBSOLETE: Replaced with $obsolete
-#   FIG_PROMPT_CL: Replaced with $cl
-#   FIG_PROMPT_DESCRIPTION: Replaced with $description
-#   FIG_PROMPT_CHANGENAME: Replaced with $changename
-#   FIG_PROMPT_HAS_SHELVE: Replaced with $has_shelve
-function get_fig_prompt_template() {
-  echo -n '%F{yellow}FIG_PROMPT_MODIFIED %F{green}FIG_PROMPT_ADDED'
-  echo -n ' %F{red}FIG_PROMPT_DELETED %F{magenta}FIG_PROMPT_UNKNOWN'
-  echo -n ' %F{magenta}FIG_PROMPT_HAS_SHELVE %F{white}FIG_PROMPT_DESCRIPTION '
-  echo -n ' %F{blue}FIG_PROMPT_UNEXPORTED %F{red}FIG_PROMPT_OBSOLETE'
-  echo -n ' %F{white}FIG_PROMPT_CL'
-}
 
 export EDITOR='nvim'
 
@@ -113,31 +87,3 @@ source ~/.zsh/term-title.plugin.zsh
 # Configure bash history to work w/ tmux
 ## After each command, save and reload history
 #export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# Alias to run curio
-alias curio=/google/bin/releases/secmon-tools/curio/curio
-export OMEN_DIR=security/detection/pipeline/omen
-export CURIO_DIR=ops/security/curio
-export CURIUM_DIR=security/curium
-
-# buildfix
-alias buildfix='/google/data/ro/teams/ads-integrity/buildfix'
-
-# Default GFS user + aliases
-export GFS_USER="secmon-logs"
-alias gqui="gqui --gfs_user=$GFS_USER"
-alias fu="fileutil --gfs_user=$GFS_USER"
-alias dremel="dremel --gfs_user=$GFS_USER"
-export HEAD="/google/src/head/depot/google3"
-export EXP="experimental/users/andrib"
-export LOGS_DIR="/usr/local/google/tmp"
-
-alias wm_cell_manager=/google/bin/releases/streaming-flume/tools/cell_manager
-alias iwyu=/google/src/files/head/depot/google3/devtools/maintenance/include_what_you_use/iwyu.py
-alias iwyu-cl=$HOME/scripts/iwyu-cl.bash
-alias gst=/google/bin/releases/scaffolding/template_gen/gen_scaffolding_templates.par
-alias omen=/google/bin/releases/detection-pipeline/omen/omen
-alias omen-dev="/google/bin/releases/detection-pipeline/omen/omen --environment=dev"
-
-source /etc/bash_completion.d/hgd
-
